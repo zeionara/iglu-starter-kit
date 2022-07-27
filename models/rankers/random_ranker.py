@@ -3,6 +3,10 @@ import numpy as np
 class RandomRanker:
     def __init__(self):
         pass
+
+    def raise_aicrowd_error(self, msg):
+        """ Will be used by the evaluator to provide logs, DO NOT CHANGE """
+        raise NameError(msg)
     
     def rank_questions(self, instruction, gridworld_state, question_bank, max_questions_per_instruction):
         """
