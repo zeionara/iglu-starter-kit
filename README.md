@@ -270,34 +270,6 @@ docker pull iglucontest/gridworld_env:latest
 This image is based on `nvidia/cuda:11.6.1-cudnn8-runtime-ubuntu20.04` base image. If you want to have a custom base,
 use the following [Dockerfile](https://github.com/iglu-contest/gridworld/blob/master/docker/Dockerfile)
 
-## Testing IGLU framework:
-
-Note that by default IGLU env runs in headless mode. To run headed do 
-
-```sh
-export IGLU_HEADLESS=0
-```
-
-Now, run the environment loop:
-
-```python
-import gym
-import gridworld
-from gridworld.tasks import DUMMY_TASK
-
-# create vector based env. Rendering is enabled by default. 
-# To turn it off, use render=False.
-env = gym.make('IGLUGridworld-v0')
-
-# It is mandatory to task the environemnt. 
-# For dummy looping, you can use a DUMMY_TASK object:
-env.set_task(DUMMY_TASK)
-done = False
-obs = env.reset()
-while not done:
-  action = env.action_space.sample()
-  obs, reward, done, info = env.step(action)
-```
 
 # Baselines
 
