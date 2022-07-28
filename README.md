@@ -39,101 +39,11 @@ of the competition.
 
 # 💾 Dataset
 
-The main way for working with IGLU dataset is through an interface provided by the enviornment.
-It provides a convenient task loader for RL track and sampler for NLP track. Here is an example of how to use it:
+Download the public dataset for the NLP Task using the link below, you'll need to accept the rules of the competition to access the data.
 
-```python
-import gym
-from gridworld.data import IGLUDataset
+https://www.aicrowd.com/challenges/neurips-2022-iglu-challenge-nlp-task/dataset_files
 
-dataset = IGLUDataset(dataset_version='v0.1.0-rc1') 
-# leave dataset_version empty to access the most recent version of the dataset.
-
-env = gym.make('IGLUGridworld-v0')
-env.set_task_generator(dataset)
-```
-
-In this example, we download the dataset of tasks for RL env. 
-Internally, on each `.reset()` of the env, the dataset samples a random task (inside its own `.reset()` method) and makes it active in the env. The `Task` object is responsible for calculating the reward, providing the text part of the observation, and determining if the episode has ended.
-
-The structure of the IGLU dataset is following. The dataset consists of structures that represent overall collaboration goals. For each structure, we have several collaboration sessions that pair architects with builders to build each particular structure. Each session consists of a sequence of "turns". Each turn represents an *atomic* instruction and corresponding changes of the blocks in the world. The structure of a `Task` object is following:
-
-  * `target_grid` - target blocks configuration that needs to be built
-  * `starting_grid` - optional, blocks for the environment to begin the episode with.
-  * `chat` - full conversation between the architect and builder, including the most recent instruction
-  * `last_instruction` - last utterance of the architect
-
-Sometimes, the instructions can be ambiguous and the builder asks a clarifying question which the architect answers. In the latter case, `last_instruction` will contain three utterances: an instruction, a clarifying question, and an answer to that question. Otherwise, `last_instruction` is just one utterance of the architect.
-
-To represent collaboration sessions, the `Subtasks` class is used. This class represents a sequence of dialog utterances and their corresponding goals (each of which is a partially completed structure). On `.reset()` call, it picks a random turn and returns a `Task` object, where starting and target grids are consecutive partial structures and the dialog contains all utterances up until the one corresponding to the target grid.
-
-In the example above, the dataset object is structured as follows:
-
-```python
-# .tasks is a dict mapping from structure to a list of sessions of interaction
-dataset.tasks 
-# each value contains a list corresponding to collaboration sessions.
-dataset.tasks['c73']
-# Each element of this list is an instance of `Subtasks` class
-dataset.tasks['c73'][0]
-```
-
-The `.reset()` method of `IGLUDataset` does effectively the following:
-
-```python
-def reset(dataset):
-  task_id = random.choice(dataset.tasks.keys())
-  session = random.choice(dataset.tasks[task_id])
-  subtask = session.reset() # Task object is returned
-  return subtask
-```
-
-This behavior can be customized simply by overriding the reset method in a subclass:
-
-```python
-import gym
-from gridworld.data import IGLUDataset
-
-class MyDataset(IGLUDataset):
-  def __init__(self, *args, **kwargs):
-    super().__init__(*args, **kwargs)
-    self.my_task_id = 'c73'
-    self.my_session = 0
-  
-  def reset(self):
-    return self.tasks[self.my_task_id][self.my_session].reset()
-
-env = gym.make('IGLUGridworld-v0')
-my_dataset = MyDataset(dataset_version='v0.1.0-rc1')
-env.set_task_generator(my_dataset)
-# do training/sampling
-```
-
-On the first creation, the dataset is downloaded and parsed automatically. Below you will find the structure of the dataset:
-
-```
-dialogs.csv
-builder-data/
-  ...
-  1-c118/ # session id - structure_id
-    step-2
-  ...
-  9-c118/
-    step-2
-    step-4
-    step-6
-  1-c120/
-    step-2
-  ...
-  23-c126/
-    step-2
-    step-4
-    step-6
-    step-8
-```
-
-Here, `dialog.csv` contains the utterances of architects and builders solving different tasks in 
-different sessions. The `builder-data/` directory contains builder behavior recorded by the voxel.js engine. Right now we extract only the resulting grids and use them as targets.
+TODO: Add dataset description
 
 # Setting Up Your Codebase
 
