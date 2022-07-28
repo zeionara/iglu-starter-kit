@@ -34,6 +34,20 @@ This task is about determining when and what clarifying questions to ask. Given 
 
 Models submitted to the NLP track are going to be evaluated according to both *when to ask* and *what to ask* criteria. The first criterion is a binary classification problem: whether to ask a clarification question or not. Models’ performance are reported using classic metrics such as precision, recall, F1 score, and accuracy. The second criterion evaluates how closely the list of human-issued clarifying questions are ranked. We adopt standard metrics such as MRR.
 
+# Baselines
+
+See [baselines section](https://gitlab.aicrowd.com/aicrowd/challenges/iglu-challenge-2022/iglu-2022-rl-task-starter-kit#how-can-i-get-going-with-an-existing-baseline)
+
+# How to Test and Debug Locally
+
+The best way to test your models is to run your submission locally.
+
+You can do this naively by simply running  `python local_evaluation.py`. 
+
+# How to Submit
+
+More information on submissions can be found at our [SUBMISSION.md](/docs/submission.md).
+
 #### A high level description of the Challenge Procedure:
 1. **Sign up** to join the competition [on the AIcrowd website](https://www.aicrowd.com/challenges/neurips-2022-iglu-challenge).
 2. **Clone** this repo and start developing your solution.
@@ -98,13 +112,7 @@ Finally, **you must specify an AIcrowd submission JSON in `aicrowd.json` to be s
 
 ### How can I get going with an existing baseline?
 
-A simple heuristic baseline is added into `agents/color_correct_random_agent.py`, you can refer to it as an
-example of using the observation space.
-
-A much more advanced baseline is available [here](https://github.com/iglu-contest/iglu-2022-rl-baseline). 
-It consists of three parts: 1. task generator (NLP part): it predicts target blocks to add or remove in response to an instruction.
-2. subtask generator (heuristic part): a piece of heuristic python code that suggest an order in which blocks should be added or removed (including supporting ones). 3. subtask solving module (RL part): a trained policy that exetutes one-block-placement tasks along the order provided by heuristic subtask generator. **During the warmup round**, the baseline is available as an open-source repository, without integration for the submission system. The integration will be provided when competition starts. 
-
+See [baselines section](#baselines)
 
 ### How can I get going with a completely new model?
 
@@ -186,20 +194,6 @@ docker pull iglucontest/gridworld_env:latest
 This image is based on `nvidia/cuda:11.6.1-cudnn8-runtime-ubuntu20.04` base image. If you want to have a custom base,
 use the following [Dockerfile](https://github.com/iglu-contest/gridworld/blob/master/docker/Dockerfile)
 
-
-# Baselines
-
-See [baselines section](https://gitlab.aicrowd.com/aicrowd/challenges/iglu-challenge-2022/iglu-2022-rl-task-starter-kit#how-can-i-get-going-with-an-existing-baseline)
-
-# How to Test and Debug Locally
-
-The best way to test your models is to run your submission locally.
-
-You can do this naively by simply running  `python local_evaluation.py`. 
-
-# How to Submit
-
-More information on submissions can be found at our [SUBMISSION.md](/docs/submission.md).
 
 ## Contributors
 
