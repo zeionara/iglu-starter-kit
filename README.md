@@ -32,11 +32,11 @@ This task is about determining when and what clarifying questions to ask. Given 
 
 # 🖊 Evaluation
 
-Models submitted to the NLP track are going to be evaluated according to both *when to ask* and *what to ask* criteria. The first criterion is a binary classification problem: whether to ask a clarification question or not. Models’ performance are reported using classic metrics such as precision, recall, F1 score, and accuracy. The second criterion evaluates how closely the list of human-issued clarifying questions are ranked. We adopt standard metrics such as MRR.
+Models submitted to the NLP track are going to be evaluated according to both *when to ask* and *what to ask* criteria. The first criterion is a binary classification problem: whether to ask a clarification question or not. Models’ performance are reported using classic metrics such as precision, recall, F1 score, and accuracy. The second criterion evaluates ranking of the list of human-issued clarifying questions. We adopt standard metrics such as MRR.
 
 # Baselines
 
-See [baselines section](https://gitlab.aicrowd.com/aicrowd/challenges/iglu-challenge-2022/iglu-2022-rl-task-starter-kit#how-can-i-get-going-with-an-existing-baseline)
+See [baselines section](#baselines)
 
 # How to Test and Debug Locally
 
