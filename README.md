@@ -39,11 +39,7 @@ Models submitted to the NLP track are going to be evaluated according to both *w
 
 # Baselines
 
-We have implemented the classification and ranker baseline models. Refer to the following links to learn more about the input, output and using the models.
-
-[`classifiers/random_classifier.py`](classifiers/random_classifier.py) 
-
-[`rankers/random_ranker.py`](rankers/random_ranker.py)
+We have implemented the classification and ranker baseline models. Refer to the [models/README](https://gitlab.aicrowd.com/aicrowd/challenges/iglu-challenge-2022/iglu-2022-clariq-nlp-starter-kit/-/tree/master/models) to learn more about the input, output and usage of the models.
 
 TODO: provide brief description of the baselines.
 
