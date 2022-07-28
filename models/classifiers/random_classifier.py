@@ -15,6 +15,7 @@ class RandomClassifier:
             instruction - Single instruction string
 
             gridworld_state - Internal state from the iglu-gridworld simulator corresponding to the instuction
+                              NOTE: The state will only contain the "avatarInfo" and "worldEndingState"
 
         Outputs:
             0 or 1 - 0 if clarification is not required, 1 if clarification is required 

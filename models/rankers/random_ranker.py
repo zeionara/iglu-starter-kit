@@ -17,8 +17,10 @@ class RandomRanker:
                           But only questions requiring clarifying questions will be scored
 
             gridworld_state - Internal state from the iglu-gridworld simulator corresponding to the instuction
+                              NOTE: The state will only contain the "avatarInfo" and "worldEndingState"
 
             question_bank - List of clarifying questions to rank
+                            
 
             max_questions_per_instruction - The maximum number of clarifying questions you need to return, 
                                             any more than this number will not be scored
