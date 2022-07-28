@@ -16,11 +16,14 @@ Quick Links:
 
 
 # Table of Contents
-1. [Intro to IGLU Gridworld and the IGLU Challenge](#intro-to-iglu-gridworld-and-the-iglu-challenge)
-2. [Setting up your codebase](#setting-up-your-codebase)
-3. [Baselines](#baselines)
+1. [Intro to the NLP Task](#nlp-task)
+2. [Evaluation](#evaluation)
+3. [Baselines](#baselines) 
 4. [How to test and debug locally](#how-to-test-and-debug-locally)
 5. [How to submit](#how-to-submit)
+6. [Dataset](#dataset)
+7. [Setting up your codebase](#setting-up-your-codebase)
+8. [FAQs](#faqs)
 
 # 🙋 NLP Task: Asking Clarifying Questions
 
@@ -36,7 +39,12 @@ Models submitted to the NLP track are going to be evaluated according to both *w
 
 # Baselines
 
-See [baselines section](#baselines)
+We have implemented the classification and ranker baseline models. Refer to the following links to learn more about the input, output and using the models.
+
+[`classifiers/random_classifier.py`](classifiers/random_classifier.py) 
+[`rankers/random_ranker.py`](rankers/random_ranker.py)
+
+TODO: provide brief description of the baselines.
 
 # How to Test and Debug Locally
 
