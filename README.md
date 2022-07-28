@@ -42,6 +42,7 @@ Models submitted to the NLP track are going to be evaluated according to both *w
 We have implemented the classification and ranker baseline models. Refer to the following links to learn more about the input, output and using the models.
 
 [`classifiers/random_classifier.py`](classifiers/random_classifier.py) 
+
 [`rankers/random_ranker.py`](rankers/random_ranker.py)
 
 TODO: provide brief description of the baselines.
