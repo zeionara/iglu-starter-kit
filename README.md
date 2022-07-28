@@ -168,7 +168,7 @@ The different files and directories have following meaning:
 ├── requirements.txt       # Python packages to be installed
 ├── local_evaluation.py    # Use this to check your agent evaluation flow locally
 ├── evaluator/             # Contains helper functions for local evaluation
-└── agents                 # Place your agents related code here
+└── models                 # Place your models and related code here
     ├── rankers            # Folder keep all your ranker code
     ├── classifiers        # Folder keep all your classifier code
     └── user_config.py     # IMPORTANT: Add your classifer and ranker name here
@@ -190,11 +190,9 @@ It consists of three parts: 1. task generator (NLP part): it predicts target blo
 
 ### How can I get going with a completely new model?
 
-Train your model as you like, and when you’re ready to submit, just adapt
-`YourAgent` in `agents/your_agent.py` to load your model and take a `batched_step`.
+Train your model as you like, and when you’re ready to submit, implement the inference class in the `models/classifiers` and `models/rankers` folders. Refer to [`models/README.md`](models/README.md) for a detailed explanation.
 
-Then just set your `AGENT` in `agents/vector_agent.py` to be this class 
-and you are ready to test with `python local_evaluation.py`
+Once you are ready, test your implementation `python local_evaluation.py`
 
 ### How do I actually make a submission?
 
@@ -203,7 +201,7 @@ The `aicrowd.json` of each submission should contain the following content:
 
 ```json
 {
-  "challenge_id": "neurips-2022-the-iglu-challenge-rl-task",
+  "challenge_id": "neurips-2022-the-iglu-challenge-nlp-task",
   "authors": ["your-aicrowd-username"],
   "description": "(optional) description about your awesome agent",
   "gpu": true
@@ -214,7 +212,7 @@ The submission is made by adding everything including the model to git,
 tagging the submission with a git tag that starts with `submission-`, and 
 pushing to AIcrowd's GitLab. The rest is done for you!
 
-More details are available [here](/docs/submission.md).
+More details are available [docs/submission.md](docs/submission.md).
 
 ### Are there any hardware or time constraints?
 
