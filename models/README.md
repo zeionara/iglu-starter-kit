@@ -14,7 +14,9 @@ See `models/classifiers/random_classifier.py` for an example.
 
 ## Ranker
 
-The ranker's `rank_questions` function will get an instruction, gridworld state and a list of clarifying questions as its inputs. All instructions may not need a clarifying question, however this information is not provided to the ranker. Questions that do not need clarificaiton will not be used for scoring the ranker.  Your class must implement the `rank_questions` function and return the list of . The output should 0 or 1 - 0 if clarification is not required, 1 if clarification is required. Invalid outputs may cause the submission to fail.
+The ranker's `rank_questions` function will get an instruction, gridworld state and a list of clarifying questions as its inputs. All instructions may not need a clarifying question, however this information is not provided to the ranker. Questions that do not need clarificaiton will not be used for scoring the ranker.  Your class must implement the `rank_questions` function and return the list of . The output should be a ranked list of clarifying questions is required. Invalid outputs may cause the submission to fail.
+
+See `models/classifiers/random_ranker.py` for an example
 
 
 ## What's used by the evaluator
