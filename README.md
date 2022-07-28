@@ -16,7 +16,7 @@ Quick Links:
 
 
 # Table of Contents
-1. [Intro to the NLP Task](#nlp-task)
+1. [Intro to the NLP Task](#intro-to-the-task-:-asking-clarifying-questions)
 2. [Evaluation](#evaluation)
 3. [Baselines](#baselines) 
 4. [How to test and debug locally](#how-to-test-and-debug-locally)
@@ -25,7 +25,7 @@ Quick Links:
 7. [Setting up your codebase](#setting-up-your-codebase)
 8. [FAQs](#faqs)
 
-# 🙋 NLP Task: Asking Clarifying Questions
+# Intro to the Task: Asking Clarifying Questions
 
 This task is about determining when and what clarifying questions to ask. Given the instruction from the Architect (e.g., “Help me build a house.”), the Builder needs to decide whether it has sufficient information to carry out that described task or if further clarification is needed. For instance, the Builder might ask “What material should I use to build the house?” or “Where do you want it?”. In this NLP task, we focus on the research question "what to ask to clarify a given instruction" independently from learning to interact with the 3D environment. The original instruction and its clarification can be used as input for the Builder to guide its progress.
 
@@ -33,7 +33,7 @@ This task is about determining when and what clarifying questions to ask. Given 
 
 *Top: architect's instruction was clear, not clarifying question gets asked. Bottom: 'leftmost' is ambiguous, so the builder asks a clarifying question.*
 
-# 🖊 Evaluation
+# Evaluation
 
 Models submitted to the NLP track are going to be evaluated according to both *when to ask* and *what to ask* criteria. The first criterion is a binary classification problem: whether to ask a clarification question or not. Models’ performance are reported using classic metrics such as precision, recall, F1 score, and accuracy. The second criterion evaluates ranking of the list of human-issued clarifying questions. We adopt standard metrics such as MRR.
 
