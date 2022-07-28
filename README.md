@@ -147,20 +147,6 @@ GitLab.
 * How do I submit a model?
   * More information on submissions can be found at our [SUBMISSION.md](/docs/submission.md). In short, you should push you code to the AIcrowd's gitlab with a specific git tag and the evaluation will be triggered automatically.
 
-
-
-## How to write your own agent?
-
-
-We recommend that you place the code for all your agents in the `agents` directory (though it is not mandatory). You should implement the `act` function.
-
-**Add your agent name in** `user_config.py`
-  
-See the example in `agents/random_agent.py` and `agents/color_correct_random_agent.py`
-
-### Parallel Environments
-Since IGLU-Gridworld is super fast, you may want to run multiple envs in parallel and process a batch of observations at once. Detailed explanation for using parallel environments is provided in `agents/README.md`
-
 ### How do I specify my dependencies?
 
 We accept submissions with custom runtimes, so you can choose your 
