@@ -3,13 +3,14 @@ import torch
 from transformers import BertTokenizer
 from transformers import BertForSequenceClassification
 
-class RandomClassifier:
+class BERTClassifier:
     def __init__(self):
         self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
         self.max_seq_length=128
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
         self.model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2)
         #TODO: Load weights
+        self.model.to(self.device)
 
 
     def raise_aicrowd_error(self, msg):
@@ -30,7 +31,7 @@ class RandomClassifier:
 
         """
 
-        with torch.no_grad()
+        with torch.no_grad():
             encoded_dict = self.tokenizer.encode_plus(
                                 instruction.lower(),
                                 add_special_tokens = True, 
@@ -40,10 +41,8 @@ class RandomClassifier:
                                 return_attention_mask = True,   
                                 return_tensors = 'pt',     
                         )
-            
-            inputs = torch.unsqueeze(torch.tensor(encoded_dict['input_ids']), dim=0)
-            attention_mask = torch.unsqueeze(torch.tensor(encoded_dict['attention_mask']), dim=0)
-            
+            inputs = encoded_dict['input_ids'].to(self.device)
+            attention_mask = encoded_dict['attention_mask'].to(self.device)
             results = self.model(inputs, attention_mask=attention_mask)
 
-        return results.logits.cpu().numpy()[0]
+        return np.argmax(results.logits.cpu().numpy())

@@ -21,7 +21,9 @@ def get_gridworld_state(index, instructions_df):
 
 def run_classification(classifier, instuctions_df, LocalEvalConfig):
     predictions = {}
-    for index, instuction in tqdm(instuctions_df.InputInstruction.iteritems(), desc='Running classifier'):
+    for index, instuction in tqdm(instuctions_df.InputInstruction.iteritems(), 
+                                  total=len(instuctions_df),
+                                  desc='Running classifier'):
         gridworld_state = get_gridworld_state(index, instuctions_df)
         res = classifier.clarification_required(instuction, gridworld_state)
         assert res in [0, 1], "Result of classfier should be 0 or 1"
@@ -34,7 +36,9 @@ def run_classification(classifier, instuctions_df, LocalEvalConfig):
 
 def run_ranking(ranker, instuctions_df, LocalEvalConfig):
     predictions = {}
-    for index, instuction in tqdm(instuctions_df.InputInstruction.iteritems(), desc='Running ranker'):
+    for index, instuction in tqdm(instuctions_df.InputInstruction.iteritems(),
+                                  total=len(instuctions_df),
+                                  desc='Running ranker'):
         gridworld_state = get_gridworld_state(index, instuctions_df)
         question_bank_path = os.path.join(LocalEvalConfig.DATA_FOLDER, 'question_bank.json')
         question_bank = read_json_file(question_bank_path)["question_bank"]
