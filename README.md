@@ -43,7 +43,14 @@ Models submitted to the NLP track are going to be evaluated according to both *w
 
 We have implemented the classification and ranker baseline models. Refer to the [models/README](https://gitlab.aicrowd.com/aicrowd/challenges/iglu-challenge-2022/iglu-2022-clariq-nlp-starter-kit/-/tree/master/models) to learn more about the input, output and usage of the models.
 
-TODO: provide brief description of the baselines.
+We adapt the baselines from [Clarifying Questions for Open-Domain Dialogue Systems (ClariQ) challenge](https://convai.io/) as folows:
+- Baseline for  when to ask Clarifying Questions: As a simple baseline for this task,  fine-tuned BERT, BART and RoBERTa followed by a classification layer could be employed to predict if instructions are clear or not.
+- Baseline for  What Clarifying Questions to ask:  
+    1. BM25: This baseline model ranks the clarifying questions in the quetion bank using a BM25 ranker. 
+    2. BERT-Based Ranker: A fine-tuned a BERT-based model is used to rerank all the questions in each instruction's question bank. 
+
+The results of two model can be found in the leaderboard and the code is shared in a Google Colab Notebook.
+TODO: submit baselines to leaderboard?.
 
 # How to Test and Debug Locally
 
