@@ -73,7 +73,7 @@ number of rollouts to compute and report the metrics on the leaderboard
 of the competition.
 
 
-# 💾 Dataset
+#Dataset
 
 Download the public dataset for this Task using the link below, you'll need to accept the rules of the competition to access the data.
 
@@ -97,7 +97,7 @@ The dataset consists of
 
 `question_bank.csv`: This file contains mapping between `qids` mentioned in `qrel` and `qbank` columns of the `clarifying_questions_train.csv` to the bank of clarifying questions issued by annotators.
 
-Merged list of ids in the `qrel` and `qbank` columns will give you the list of all qids to be ranked for each unclear instruction.
+*Merged list of ids in the `qrel` and `qbank` columns will give you the list of all qids to be ranked for each unclear instruction.*
 
 # Setting Up Your Codebase
 
