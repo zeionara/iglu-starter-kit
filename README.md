@@ -72,11 +72,11 @@ https://www.aicrowd.com/challenges/neurips-2022-iglu-challenge-nlp-task/dataset_
 
 The dataset consists of `clarifying_questions_train.csv` file and `initial_world_paths` folder.
 
-The `clarifying_questions_train.csv` has the following columns:
+`clarifying_questions_train.csv` has the following columns:
 
   * `GameId` - Id of the game session.
   * `InitializedWorldPath` - Path to the file under `initial_world_paths` that contains state of the world intialized to the architect. The architect provides an instruction to build based on this world state. More information to follow on how the world state can be parsed/ visualized. 
-  * `InputInstruction` - Instruction provided by architect.
+  * `InputInstruction` - Instruction provided by the architect.
   * `IsInstructionClear` - Specifies whether the instruction provided by architect is clear. This has been marked by another annotator who is not the architect.
   * `ClarifyingQuestion` - Question asked by annotator upon marking instruction as being unclear.
   * `qrel` - Id of the relevant clarifying question for the current instruction.
