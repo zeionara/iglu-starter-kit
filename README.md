@@ -16,27 +16,41 @@ Quick Links:
 
 
 # Table of Contents
-1. [Intro to IGLU Gridworld and the IGLU Challenge](#intro-to-iglu-gridworld-and-the-iglu-challenge)
-2. [Setting up your codebase](#setting-up-your-codebase)
-3. [Baselines](#baselines)
+1. [Intro to the NLP Task](#intro-to-the-task-:-asking-clarifying-questions)
+2. [Evaluation](#evaluation)
+3. [Baselines](#baselines) 
 4. [How to test and debug locally](#how-to-test-and-debug-locally)
 5. [How to submit](#how-to-submit)
+6. [Dataset](#dataset)
+7. [Setting up your codebase](#setting-up-your-codebase)
+8. [FAQs](#faqs)
 
-# 🙋 NLP Task: Asking Clarifying Questions
+# Intro to the Task: Asking Clarifying Questions
 
-This task is about determining when and what clarifying questions to ask. Given the instruction from the Architect (e.g., “Help me build a house.”), the Builder needs to decide whether it has sufficient information to carry out that described task or if further clarification is needed. For instance, the Builder might ask “What material should I use to build the house?” or “Where do you want it?”. In this NLP task, we focus on the research question "what to ask to clarify a given instruction" independently from learning to interact with the 3D environment. The original instruction and its clarification can be used as input for the Builder to guide its progress.
+This task is about determining **when and what clarifying questions** to ask. Given the instruction from the Architect (e.g., “Help me build a house.”), the Builder needs to decide whether it has sufficient information to carry out that described task or if further clarification is needed. For instance, the Builder might ask “What material should I use to build the house?” or “Where do you want it?”. In this NLP task, we focus on the research question "what to ask to clarify a given instruction" independently from learning to interact with the 3D environment. The original instruction and its clarification can be used as input for the Builder to guide its progress.
 
 <img src="https://user-images.githubusercontent.com/660004/178754025-1966703c-3e99-4e59-ad79-bf7257e3d35b.png" width="720">
 
 *Top: architect's instruction was clear, not clarifying question gets asked. Bottom: 'leftmost' is ambiguous, so the builder asks a clarifying question.*
 
-# 🖊 Evaluation
+# Evaluation
 
-Models submitted to the NLP track are going to be evaluated according to both *when to ask* and *what to ask* criteria. The first criterion is a binary classification problem: whether to ask a clarification question or not. Models’ performance are reported using classic metrics such as precision, recall, F1 score, and accuracy. The second criterion evaluates how closely the list of human-issued clarifying questions are ranked. We adopt standard metrics such as MRR.
+Models submitted to the NLP track are going to be evaluated according to both *when to ask* and *what to ask* criteria. 
+- **when to ask:** The first criterion is a binary classification problem: whether to ask a clarification question or not. Models’ performance are reported using classic metrics such as precision, recall, F1 score, and accuracy. 
+- **What to ask:** The second criterion evaluates ranking of the list of human-issued clarifying questions for a given ambiguous instruction. We adopt standard metrics such as MRR.
 
 # Baselines
 
-See [baselines section](https://gitlab.aicrowd.com/aicrowd/challenges/iglu-challenge-2022/iglu-2022-rl-task-starter-kit#how-can-i-get-going-with-an-existing-baseline)
+We have implemented the classification and ranker baseline models. Refer to the [models/README](https://gitlab.aicrowd.com/aicrowd/challenges/iglu-challenge-2022/iglu-2022-clariq-nlp-starter-kit/-/tree/master/models) to learn more about the input, output and usage of the models.
+
+We adapt the baselines from [Clarifying Questions for Open-Domain Dialogue Systems (ClariQ) challenge](https://convai.io/) as folows:
+- Baseline for  when to ask Clarifying Questions: As a simple baseline for this task,  fine-tuned BERT, BART and RoBERTa followed by a classification layer could be employed to predict if instructions are clear or not.
+- Baseline for  What Clarifying Questions to ask:  
+    1. BM25: This baseline model ranks the clarifying questions in the quetion bank using a BM25 ranker. 
+    2. BERT-Based Ranker: A fine-tuned a BERT-based model is used to rerank all the questions in each instruction's question bank. 
+
+The results of baselines models can be found in the leaderboard and the code is shared in a Google Colab Notebook.
+TODO: submit baselines to leaderboard?.
 
 # How to Test and Debug Locally
 
@@ -61,11 +75,21 @@ of the competition.
 
 # 💾 Dataset
 
-Download the public dataset for the NLP Task using the link below, you'll need to accept the rules of the competition to access the data.
+Download the public dataset for this Task using the link below, you'll need to accept the rules of the competition to access the data.
 
 https://www.aicrowd.com/challenges/neurips-2022-iglu-challenge-nlp-task/dataset_files
 
-TODO: Add dataset description
+The dataset consists of `clarifying_questions_train.csv` file and `initial_world_paths` folder.
+
+`clarifying_questions_train.csv` has the following columns:
+
+  * `GameId` - Id of the game session.
+  * `InitializedWorldPath` - Path to the file under `initial_world_paths` that contains state of the world intialized to the architect. The architect provides an instruction to build based on this world state. More information to follow on how the world state can be parsed/ visualized. 
+  * `InputInstruction` - Instruction provided by the architect.
+  * `IsInstructionClear` - Specifies whether the instruction provided by architect is clear. This has been marked by another annotator who is not the architect.
+  * `ClarifyingQuestion` - Question asked by annotator upon marking instruction as being unclear.
+  * `qrel` - Id of the relevant clarifying question for the current instruction.
+  * `qbank` - List of clarifying question ids that need to be ranked for each unclear instruction.
 
 # Setting Up Your Codebase
 
