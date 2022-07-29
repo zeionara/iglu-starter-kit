@@ -79,7 +79,11 @@ Download the public dataset for this Task using the link below, you'll need to a
 
 https://www.aicrowd.com/challenges/neurips-2022-iglu-challenge-nlp-task/dataset_files
 
-The dataset consists of `clarifying_questions_train.csv` file and `initial_world_paths` folder.
+The dataset consists of 
+
+  - `clarifying_questions_train.csv` 
+  - `question_bank.csv`
+  - `initial_world_paths` folder
 
 `clarifying_questions_train.csv` has the following columns:
 
@@ -88,8 +92,12 @@ The dataset consists of `clarifying_questions_train.csv` file and `initial_world
   * `InputInstruction` - Instruction provided by the architect.
   * `IsInstructionClear` - Specifies whether the instruction provided by architect is clear. This has been marked by another annotator who is not the architect.
   * `ClarifyingQuestion` - Question asked by annotator upon marking instruction as being unclear.
-  * `qrel` - Id of the relevant clarifying question for the current instruction.
-  * `qbank` - List of clarifying question ids that need to be ranked for each unclear instruction.
+  * `qrel` - Question id (qid) of the relevant clarifying question for the current instruction.
+  * `qbank` - List of clarifying question ids that need to be ranked for each unclear instruction. The mapping between clarifying questions and ids is present in the `question_bank.csv`.
+
+`question_bank.csv`: This file contains mapping between `qids` mentioned in `qrel` and `qbank` columns of the `clarifying_questions_train.csv` to the bank of clarifying questions issued by annotators.
+
+Merged list of ids in the `qrel` and `qbank` columns will give you the list of all qids to be ranked for each unclear instruction.
 
 # Setting Up Your Codebase
 
