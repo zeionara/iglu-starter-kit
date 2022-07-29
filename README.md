@@ -200,49 +200,6 @@ The machine where the submission will run will have following specifications:
 * 4 vCPUs
 * 16 GB RAM
 
-
-## Setting Up Details [No Docker]
-
-1. **Add your SSH key** to AIcrowd GitLab
-
-    You can add your SSH Keys to your GitLab account by going to your profile settings [here](https://gitlab.aicrowd.com/profile/keys). If you do not have SSH Keys, you will first need to [generate one](https://docs.gitlab.com/ee/ssh/README.html#generating-a-new-ssh-key-pair).
-
-2.  **Clone the repository**
-
-    ```
-    git clone git@gitlab.aicrowd.com:iglu/neurips-2022-the-iglu-challenge.git
-    ```
-    
-3. **Verify you have dependencies** for the IGLU Gridworld Environment
-
-    IGLU Gridworld requires `python>=3.7` to be installed and available both when building the
-    package, and at runtime.
-    
-4. **Install** competition specific dependencies!
-
-    We advise using a conda environment for this:
-    ```bash
-    # Optional: Create a conda env
-    conda create -n iglu_challenge python=3.8
-    conda activate iglu_challenge
-    pip install -r requirements.txt
-    ```
-
-5. **Run rollouts** with a random agent with `python local_evaluation.py`.
-
-
-## Setting Up Details [Docker]
-
-Pull the official docker image with installed environment:
-
-```sh
-docker pull iglucontest/gridworld_env:latest
-```
-
-This image is based on `nvidia/cuda:11.6.1-cudnn8-runtime-ubuntu20.04` base image. If you want to have a custom base,
-use the following [Dockerfile](https://github.com/iglu-contest/gridworld/blob/master/docker/Dockerfile)
-
-
 ## Contributors
 
 - Negar Arabzadeh
