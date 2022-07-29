@@ -8,7 +8,7 @@ class RandomRanker:
         """ Will be used by the evaluator to provide logs, DO NOT CHANGE """
         raise NameError(msg)
     
-    def rank_questions(self, instruction, gridworld_state, question_bank, max_questions_per_instruction):
+    def rank_questions(self, instruction, gridworld_state, question_bank):
         """
         Implements the ranking function for a given instruction
         Inputs:
@@ -20,11 +20,6 @@ class RandomRanker:
                               NOTE: The state will only contain the "avatarInfo" and "worldEndingState"
 
             question_bank - List of clarifying questions to rank
-                            
-
-            max_questions_per_instruction - The maximum number of clarifying questions you need to return, 
-                                            any more than this number will not be scored
-                                            This is expected to be 20 (but may change during the competition)
 
         Outputs:
             ranks - A sorted list of questions from the question bank
@@ -32,6 +27,6 @@ class RandomRanker:
 
         """
 
-        np.random.shuffle(question_bank)
-        ranked_question_list = question_bank[:max_questions_per_instruction]
+        ranked_question_list = question_bank.copy()
+        np.random.shuffle(ranked_question_list)
         return ranked_question_list
