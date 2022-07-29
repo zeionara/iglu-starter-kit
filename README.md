@@ -36,22 +36,22 @@ This task is about determining **when and what clarifying questions** to ask. Gi
 # Evaluation
 
 Models submitted to the NLP track are going to be evaluated according to both *when to ask* and *what to ask* criteria with a two-step scoring process.
-- **When to ask:** The first criterion is a binary classification problem: whether to ask a clarification question or not. Models’ performance are reported using classic metrics such as F1 score. Your model's macro-average F1 score will be distributed into the following bins:
+- **When to ask:** The first criterion is a binary classification problem: whether to ask a clarification question or not. Models’ performance are reported using classic metrics such as F1 score. Your model's macro-average F1 value will be distributed into the following bins and scored accordingly:
 
-- 0.90 - 1.0
-- 0.85 - 0.90
-- 0.75 - 0.85
-- 0.70 - 0.75
-- 0.50 - 0.70
-- 0.25 - 0.50
-- 0.0 - 0.25
+  - `0.90 - 1.0` 
+  - `0.85 - 0.90`
+  - `0.75 - 0.85`
+  - `0.70 - 0.75` 
+  - `0.50 - 0.70`
+  - `0.25 - 0.50`
+  - `0.0 - 0.25`
 
-- **What to ask:** The second criterion evaluates ranking of the list of human-issued clarifying questions for a given ambiguous instruction. We adopt standard metrics such as MRR.
+
+- **What to ask:** The second criterion evaluates ranking of the list of human-issued clarifying questions for a given ambiguous instruction. We adopt standard metrics such as MRR. Your model's performance will be evaluated upto ***3 decimal places***.
 
 Your final score will be a combination of both metrics.
 
 *Please note above mentioned metrics is subject to be modified after completion of warm-up phase of the competition.*
-
 
 
 # Baselines
