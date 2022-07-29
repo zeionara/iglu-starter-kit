@@ -12,11 +12,11 @@ Quick Links:
 
 * [The IGLU Challenge - Competition Page](https://www.aicrowd.com/challenges/neurips-2022-iglu-challenge)
 * [The IGLU Challenge - Slack Workspace](https://join.slack.com/t/igluorg/shared_invite/zt-zzlc1qpy-X6JBgRtwx1w_CBqOV5~jaA&sa=D&sntz=1&usg=AOvVaw33cSaYXeinlMWYC6bGIe33)
-* [The IGLU Challenge - Starter Kit](https://gitlab.aicrowd.com/aicrowd/challenges/iglu-challenge-2022)
+* [The IGLU NLP Challenge Overview](https://gitlab.aicrowd.com/aicrowd/challenges/iglu-challenge-2022/iglu-2022-challenge-checklist/Overview-NLP.md)
 
 
 # Table of Contents
-1. [Intro to the NLP Task](#intro-to-the-task-:-asking-clarifying-questions)
+1. [Intro to the NLP Task](#intro-to-the-nlp-task)
 2. [Evaluation](#evaluation)
 3. [Baselines](#baselines) 
 4. [How to test and debug locally](#how-to-test-and-debug-locally)
@@ -25,7 +25,7 @@ Quick Links:
 7. [Setting up your codebase](#setting-up-your-codebase)
 8. [FAQs](#faqs)
 
-# Intro to the Task: Asking Clarifying Questions
+# Intro to the NLP Task: Asking Clarifying Questions
 
 This task is about determining **when and what clarifying questions** to ask. Given the instruction from the Architect (e.g., “Help me build a house.”), the Builder needs to decide whether it has sufficient information to carry out that described task or if further clarification is needed. For instance, the Builder might ask “What material should I use to build the house?” or “Where do you want it?”. In this NLP task, we focus on the research question "what to ask to clarify a given instruction" independently from learning to interact with the 3D environment. The original instruction and its clarification can be used as input for the Builder to guide its progress.
 
