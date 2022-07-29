@@ -66,7 +66,7 @@ of the competition.
 
 # 💾 Dataset
 
-Download the public dataset for the NLP Task using the link below, you'll need to accept the rules of the competition to access the data.
+Download the public dataset for this Task using the link below, you'll need to accept the rules of the competition to access the data.
 
 https://www.aicrowd.com/challenges/neurips-2022-iglu-challenge-nlp-task/dataset_files
 
