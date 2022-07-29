@@ -74,7 +74,7 @@ number of rollouts to compute and report the metrics on the leaderboard
 of the competition.
 
 
-#Dataset
+# Dataset
 
 Download the public dataset for this Task using the link below, you'll need to accept the rules of the competition to access the data.
 
