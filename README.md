@@ -49,7 +49,7 @@ We adapt the baselines from [Clarifying Questions for Open-Domain Dialogue Syste
     1. BM25: This baseline model ranks the clarifying questions in the quetion bank using a BM25 ranker. 
     2. BERT-Based Ranker: A fine-tuned a BERT-based model is used to rerank all the questions in each instruction's question bank. 
 
-The results of two model can be found in the leaderboard and the code is shared in a Google Colab Notebook.
+The results of baselines models can be found in the leaderboard and the code is shared in a Google Colab Notebook.
 TODO: submit baselines to leaderboard?.
 
 # How to Test and Debug Locally
