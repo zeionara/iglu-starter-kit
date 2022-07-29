@@ -96,9 +96,10 @@ The dataset consists of
   * `qrel` - Question id (qid) of the relevant clarifying question for the current instruction.
   * `qbank` - List of clarifying question ids that need to be ranked for each unclear instruction. The mapping between clarifying questions and ids is present in the `question_bank.csv`.
 
+*Merged list of ids in the `qrel` and `qbank` columns will give you the list of all qids to be ranked for each unclear instruction.*
+
 `question_bank.csv`: This file contains mapping between `qids` mentioned in `qrel` and `qbank` columns of the `clarifying_questions_train.csv` to the bank of clarifying questions issued by annotators.
 
-*Merged list of ids in the `qrel` and `qbank` columns will give you the list of all qids to be ranked for each unclear instruction.*
 
 # Setting Up Your Codebase
 
