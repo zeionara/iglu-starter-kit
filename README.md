@@ -27,7 +27,7 @@ Quick Links:
 
 # Intro to the Task: Asking Clarifying Questions
 
-This task is about determining when and what clarifying questions to ask. Given the instruction from the Architect (e.g., “Help me build a house.”), the Builder needs to decide whether it has sufficient information to carry out that described task or if further clarification is needed. For instance, the Builder might ask “What material should I use to build the house?” or “Where do you want it?”. In this NLP task, we focus on the research question "what to ask to clarify a given instruction" independently from learning to interact with the 3D environment. The original instruction and its clarification can be used as input for the Builder to guide its progress.
+This task is about determining **when and what clarifying questions** to ask. Given the instruction from the Architect (e.g., “Help me build a house.”), the Builder needs to decide whether it has sufficient information to carry out that described task or if further clarification is needed. For instance, the Builder might ask “What material should I use to build the house?” or “Where do you want it?”. In this NLP task, we focus on the research question "what to ask to clarify a given instruction" independently from learning to interact with the 3D environment. The original instruction and its clarification can be used as input for the Builder to guide its progress.
 
 <img src="https://user-images.githubusercontent.com/660004/178754025-1966703c-3e99-4e59-ad79-bf7257e3d35b.png" width="720">
 
