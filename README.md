@@ -35,9 +35,23 @@ This task is about determining **when and what clarifying questions** to ask. Gi
 
 # Evaluation
 
-Models submitted to the NLP track are going to be evaluated according to both *when to ask* and *what to ask* criteria. 
-- **When to ask:** The first criterion is a binary classification problem: whether to ask a clarification question or not. Models’ performance are reported using classic metrics such as precision, recall, F1 score, and accuracy. 
+Models submitted to the NLP track are going to be evaluated according to both *when to ask* and *what to ask* criteria with a two-step scoring process.
+- **When to ask:** The first criterion is a binary classification problem: whether to ask a clarification question or not. Models’ performance are reported using classic metrics such as F1 score. Your model's macro-average F1 score will be distributed into the following bins:
+
+- 0.90 - 1.0
+- 0.85 - 0.90
+- 0.75 - 0.85
+- 0.70 - 0.75
+- 0.50 - 0.70
+- 0.25 - 0.50
+- 0.0 - 0.25
+
 - **What to ask:** The second criterion evaluates ranking of the list of human-issued clarifying questions for a given ambiguous instruction. We adopt standard metrics such as MRR.
+
+Your final score will be a combination of both metrics.
+
+*Please note above mentioned metrics is subject to be modified after completion of warm-up phase of the competition.*
+
 
 
 # Baselines
@@ -91,12 +105,12 @@ The dataset consists of
   * `GameId` - Id of the game session.
   * `InitializedWorldPath` - Path to the file under `initial_world_paths` that contains state of the world intialized to the architect. The architect provides an instruction to build based on this world state. More information to follow on how the world state can be parsed/ visualized. 
   * `InputInstruction` - Instruction provided by the architect.
-  * `IsInstructionClear` - Specifies whether the instruction provided by architect is clear. This has been marked by another annotator who is not the architect.
-  * `ClarifyingQuestion` - Question asked by annotator upon marking instruction as being unclear.
+  * `IsInstructionClear` - Specifies whether the instruction provided by architect is clear or ambiguous. This has been marked by another annotator who is not the architect.
+  * `ClarifyingQuestion` - Question asked by annotator upon marking instruction as being ambiguous.
   * `qrel` - Question id (qid) of the relevant clarifying question for the current instruction.
   * `qbank` - List of clarifying question ids that need to be ranked for each unclear instruction. The mapping between clarifying questions and ids is present in the `question_bank.csv`.
 
-*Merged list of ids in the `qrel` and `qbank` columns will give you the list of all qids to be ranked for each unclear instruction.*
+*Merged list of ids in the `qrel` and `qbank` columns will give you the list of all qids to be ranked for each ambiguous instruction.*
 
 `question_bank.csv`: This file contains mapping between `qids` mentioned in `qrel` and `qbank` columns of the `clarifying_questions_train.csv` to the bank of clarifying questions issued by annotators.
 
