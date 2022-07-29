@@ -36,8 +36,9 @@ This task is about determining **when and what clarifying questions** to ask. Gi
 # Evaluation
 
 Models submitted to the NLP track are going to be evaluated according to both *when to ask* and *what to ask* criteria. 
-- **when to ask:** The first criterion is a binary classification problem: whether to ask a clarification question or not. Models’ performance are reported using classic metrics such as precision, recall, F1 score, and accuracy. 
+- **When to ask:** The first criterion is a binary classification problem: whether to ask a clarification question or not. Models’ performance are reported using classic metrics such as precision, recall, F1 score, and accuracy. 
 - **What to ask:** The second criterion evaluates ranking of the list of human-issued clarifying questions for a given ambiguous instruction. We adopt standard metrics such as MRR.
+
 
 # Baselines
 
