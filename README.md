@@ -36,36 +36,29 @@ This task is about determining **when and what clarifying questions** to ask. Gi
 # Evaluation
 
 Models submitted to the NLP track are going to be evaluated according to both *when to ask* and *what to ask* criteria with a two-step scoring process.
-- **When to ask:** The first criterion is a binary classification problem: whether to ask a clarification question or not. Models’ performance are reported using classic metrics such as F1 score. Your classifier's macro-average F1 value will be distributed into the following bins and scored accordingly:
+
+- **When to ask:** This is a binary classification problem: Does the provided instruction require a clarification question? We use the the [macro average F1 score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html) to evaluate your classifer. However, we do not believe optimizing this metric too much is in the best use of your time from a research perspective. Hence we quantize the F1 score into the following bins:
 
   - `0.90 - 1.0` 
   - `0.85 - 0.90`
   - `0.75 - 0.85`
-  - `0.70 - 0.75` 
-  - `0.50 - 0.70`
-  - `0.25 - 0.50`
-  - `0.0 - 0.25`
+  - `0.65 - 0.75` 
+  - `0.50 - 0.65`
+  - `0.35 - 0.50`
+  - `0.0 - 0.35`
 
+  So if your classifer gets a F1 score of 0.82, the binned F1 score will be 0.75. For a F1 score of 0.93, the binned score will be 0.90 and so on.
 
-- **What to ask:** The second criterion evaluates ranking of the list of human-issued clarifying questions for a given ambiguous instruction. We adopt standard metrics such as MRR. Your ranker's performance will be evaluated upto ***3 decimal places***.
+- **What to ask:** The second problem evaluates how well your model can rank a list of human-issued clarifying questions for a given ambiguous instruction. Your model will be evaluated on [Mean Reciprocal Rank (MRR)](https://machinelearning.wtf/terms/mean-reciprocal-rank-mrr/), rounded off to ***3 significant digits***.
 
-Your final score will be a combination of both metrics.
+The leaderboard will be ranked based on the binned F1 score, submissions with the same binned F1 score will be sorted with the MRR.
 
 *Please note above mentioned metrics is subject to be modified after completion of warm-up phase of the competition.*
 
 
 # Baselines
 
-We have implemented the classification and ranker baseline models. Refer to the [models/README](https://gitlab.aicrowd.com/aicrowd/challenges/iglu-challenge-2022/iglu-2022-clariq-nlp-starter-kit/-/tree/master/models) to learn more about the input, output and usage of the models.
-
-We adapt the baselines from [Clarifying Questions for Open-Domain Dialogue Systems (ClariQ) challenge](https://convai.io/) as folows:
-- Baseline for  when to ask Clarifying Questions: As a simple baseline for this task,  fine-tuned BERT, BART and RoBERTa followed by a classification layer could be employed to predict if instructions are clear or not.
-- Baseline for  What Clarifying Questions to ask:  
-    1. BM25: This baseline model ranks the clarifying questions in the quetion bank using a BM25 ranker. 
-    2. BERT-Based Ranker: A fine-tuned a BERT-based model is used to rerank all the questions in each instruction's question bank. 
-
-The results of baselines models can be found in the leaderboard and the code is shared in a Google Colab Notebook.
-TODO: submit baselines to leaderboard?.
+We shall be releasing the baselines soon, be on the lookout on the forums.
 
 # How to Test and Debug Locally
 
