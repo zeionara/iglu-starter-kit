@@ -1,4 +1,3 @@
-
 #!/bin/bash
 set -e
 REPO_ROOT_DIR=$(git rev-parse --show-toplevel)
@@ -45,9 +44,11 @@ check_remote() {
 }
 setup_lfs() {
   git lfs install
-  find . -type f -size +5M -exec git lfs track {} &> /dev/null \;
+  find * -type f -size +5M -exec git lfs track {} &> /dev/null \;
   set +e
-  git add .gitattributes 2&> /dev/null
+  git ls-files -om | grep ".gitattributes" &> /dev/null \
+    && git add .gitattributes \
+    && git commit -m "auto: tracking new files via LFS" &> /dev/null
   set -e
 }
 setup_commits() {
