@@ -46,44 +46,44 @@ def get_gridworld_state(index, instructions_df, datafolder, states_available):
         state.pop(drop_key)
     return state
 
-def run_classification(classifier, instuctions_df, LocalEvalConfig, states_available):
+def run_classification(classifier, instructions_df, LocalEvalConfig, states_available):
     predictions = {}
-    for index, instuction in tqdm(instuctions_df.InputInstruction.iteritems(), 
-                                  total=len(instuctions_df),
+    for index, instruction in tqdm(instructions_df.InputInstruction.iteritems(), 
+                                  total=len(instructions_df),
                                   desc='Running classifier'):
 
         gridworld_state = get_gridworld_state(index=index, 
-                                              instructions_df=instuctions_df, 
+                                              instructions_df=instructions_df, 
                                               datafolder=LocalEvalConfig.DATA_FOLDER, 
                                               states_available=states_available)
 
-        res = classifier.clarification_required(instuction, gridworld_state)
+        res = classifier.clarification_required(instruction, gridworld_state)
         assert res in [0, 1], "Result of classfier should be 0 or 1"
-        predictions[instuction] = int(res)
+        predictions[instruction] = int(res)
         
     with open(LocalEvalConfig.CLASSIFIER_RESULTS_FILE, 'w') as fp:
         json.dump(predictions, fp)
 
 
 
-def run_ranking(ranker, instuctions_df, LocalEvalConfig, states_available):
+def run_ranking(ranker, instructions_df, LocalEvalConfig, states_available):
     predictions = {}
-    for index, instuction in tqdm(instuctions_df.InputInstruction.iteritems(),
-                                  total=len(instuctions_df),
+    for index, instruction in tqdm(instructions_df.InputInstruction.iteritems(),
+                                  total=len(instructions_df),
                                   desc='Running ranker'):
 
         gridworld_state = get_gridworld_state(index=index, 
-                                              instructions_df=instuctions_df, 
+                                              instructions_df=instructions_df, 
                                               datafolder=LocalEvalConfig.DATA_FOLDER, 
                                               states_available=states_available)
 
         question_bank_path = os.path.join(LocalEvalConfig.DATA_FOLDER, 'question_bank.json')
         question_bank = read_json_file(question_bank_path)["question_bank"]
 
-        res = ranker.rank_questions(instuction, gridworld_state, question_bank)
+        res = ranker.rank_questions(instruction, gridworld_state, question_bank)
 
         assert isinstance(res, list) or isinstance(res, tuple), "Output of ranker must be a list/tuple of strings"
-        predictions[instuction] = list(res)
+        predictions[instruction] = list(res)
     
     with open(LocalEvalConfig.RANKER_RESULTS_FILE, 'w') as fp:
         json.dump(predictions, fp)
@@ -98,23 +98,23 @@ def evaluate(LocalEvalConfig):
 
     states_available = check_data(LocalEvalConfig.DATA_FOLDER)
 
-    instuctions_df = pd.read_csv(os.path.join(LocalEvalConfig.DATA_FOLDER, 'clarifying_questions_train.csv'))
+    instructions_df = pd.read_csv(os.path.join(LocalEvalConfig.DATA_FOLDER, 'clarifying_questions_train.csv'))
     
     # Run classfier
     classifier = UserClassifer()
-    run_classification(classifier, instuctions_df, LocalEvalConfig, states_available)
+    run_classification(classifier, instructions_df, LocalEvalConfig, states_available)
 
     # Run ranker
     ranker = UserRanker()
-    run_ranking(ranker, instuctions_df, LocalEvalConfig, states_available)
+    run_ranking(ranker, instructions_df, LocalEvalConfig, states_available)
 
     # Load prediction files
     classifer_preds = read_json_file(LocalEvalConfig.CLASSIFIER_RESULTS_FILE)
     ranker_preds = read_json_file(LocalEvalConfig.RANKER_RESULTS_FILE)
 
     # Get classfication score
-    classifier_gt = pd.Series(instuctions_df.IsInstructionClear.values, 
-                              index=instuctions_df.InputInstruction).to_dict()
+    classifier_gt = pd.Series(instructions_df.IsInstructionClear.values, 
+                              index=instructions_df.InputInstruction).to_dict()
     cpreds, cgt = [], []
     for instruction, instruction_is_clear   in classifier_gt.items():
         cgt.append(int(instruction_is_clear.lower() == 'yes'))
@@ -124,7 +124,7 @@ def evaluate(LocalEvalConfig):
     clariq_f1_score = f1_score(y_true=cgt, y_pred=cpreds, average='macro')
 
     # Get ranker score
-    unclear_rows = instuctions_df.dropna(subset=['ClarifyingQuestion'], inplace=False)
+    unclear_rows = instructions_df.dropna(subset=['ClarifyingQuestion'], inplace=False)
     ranker_gt = pd.Series(unclear_rows.ClarifyingQuestion.values, index=unclear_rows.InputInstruction).to_dict()
     inverse_rank_scores = []
     for instruction, clarifying_question  in ranker_gt.items():
