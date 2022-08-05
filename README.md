@@ -58,7 +58,11 @@ The leaderboard will be ranked based on the binned F1 score, submissions with th
 
 # Baselines
 
-We shall be releasing the baselines soon, be on the lookout on the forums.
+The official baseline is at the link below.
+
+https://www.aicrowd.com/showcase/baseline-bert-classifier-bm25-ranker
+
+We train a binary classifier with BERT using huggingface transformers. We also provide an example of using BM25 to rank the set of questions.
 
 # How to Test and Debug Locally
 
