@@ -117,14 +117,14 @@ def evaluate(LocalEvalConfig):
                               index=instructions_df.InputInstructionWithGameID).to_dict()
     cpreds, cgt = [], []
     for instructionWithGameID, instruction_is_clear in classifier_gt.items():
-        cgt.append(int(instruction_is_clear.lower() == 'yes'))
+        cgt.append(int(instruction_is_clear.lower() == 'no'))
         pred = classifer_preds.get(instructionWithGameID, None)
         if pred is not None:
             cpreds.append(pred)
         else:
             warnings.warn(f"No prediction for instruction + game id {instructionWithGameID}")
             # if any instruction is not predicted, default value will be taken as 1
-            cpred.append(1)
+            cpred.append(0)
 
     clariq_f1_score = f1_score(y_true=cgt, y_pred=cpreds, average='macro')
 
