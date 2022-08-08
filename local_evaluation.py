@@ -67,12 +67,13 @@ def run_classification(classifier, instructions_df, LocalEvalConfig, states_avai
 
 def run_ranking(ranker, instructions_df, LocalEvalConfig, states_available):
     predictions = {}
-    for index, row in tqdm(instructions_df.iterrows(), 
-                           total=len(instructions_df),
-                           desc='Running classifier'):
+    instructions_unclear = instructions_df.dropna(subset=['ClarifyingQuestion'], inplace=False)
+    for index, row in tqdm(instructions_unclear.iterrows(), 
+                           total=len(instructions_unclear),
+                           desc='Running ranker'):
 
         gridworld_state = get_gridworld_state(index=index, 
-                                              instructions_df=instructions_df, 
+                                              instructions_df=instructions_unclear, 
                                               datafolder=LocalEvalConfig.DATA_FOLDER, 
                                               states_available=states_available)
 
