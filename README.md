@@ -187,15 +187,13 @@ More details are available [docs/submission.md](docs/submission.md).
 
 ### Are there any hardware or time constraints?
 
-Your submission will need to complete 1 rollout per task, for ~500 tasks in 7 minutes. 
-You may expect that the evaluator will spend most of the time in actions sampling since 
-the environment alone can step through all the tasks in around 30 seconds. 
-Please, use parallel enviornments to make your agents more time-efficient. 
+Your submission will need to complete all the **ranking tasks** under **60 minutes** 
+and all the **classfying tasks** under **30 minutes**.
 
 The machine where the submission will run will have following specifications:
-* 1 NVIDIA T4 GPU
+* 1 NVIDIA T4 GPU with 16GB mem
 * 4 vCPUs
-* 16 GB RAM
+* 28GB RAM
 
 ## Contributors
 
