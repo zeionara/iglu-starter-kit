@@ -188,12 +188,13 @@ More details are available [docs/submission.md](docs/submission.md).
 ### Are there any hardware or time constraints?
 
 Your submission will need to complete all the **ranking tasks** under **60 minutes** 
-and all the **classfying tasks** under **30 minutes**.
+and all the **classfying tasks** under **30 minutes**. Make sure you take advantage 
+of all the cores by parallelizing your code if needed. 
 
 The machine where the submission will run will have following specifications:
 * 1 NVIDIA T4 GPU with 16GB mem
-* 4 vCPUs
-* 28GB RAM
+* 8 vCPUs
+* 56GB RAM
 
 ## Contributors
 
