@@ -1,0 +1,4 @@
+===================== Final scores =======================
+Binned F1 Score 0.35
+MRR for Ranker 0.014082512647970063
+F1 Score for Classifier 0.43061830928409967

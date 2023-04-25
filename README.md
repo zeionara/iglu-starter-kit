@@ -1,5 +1,15 @@
 ![IGLU Banner](https://user-images.githubusercontent.com/660004/179000978-29cf4462-4d2b-4623-8418-157449322fda.png)
 
+**Fork of a [project from gitlab](https://gitlab.aicrowd.com/aicrowd/challenges/iglu-challenge-2022/iglu-2022-clariq-nlp-starter-kit)**
+
+# Install dependencies
+
+To create new environment and install dependencies use the following command:
+
+```sh
+conda env create -f environment.yml
+```
+
 # **[NeurIPS 2022 - IGLU Challenge](https://www.aicrowd.com/challenges/neurips-2022-iglu-challenge)** - Starter Kit
 [![Discord](https://img.shields.io/discord/565639094860775436.svg)](https://discord.gg/fNRrSvZkry)
 
