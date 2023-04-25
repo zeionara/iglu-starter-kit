@@ -2,6 +2,8 @@
 
 **Fork of a [project from gitlab](https://gitlab.aicrowd.com/aicrowd/challenges/iglu-challenge-2022/iglu-2022-clariq-nlp-starter-kit)**
 
+[Data](https://github.com/eeml2022-nlp/iglu-nlp/tree/main/data/iglu) for adding to `public_data` folder.
+
 # Install dependencies
 
 To create new environment and install dependencies use the following command:
